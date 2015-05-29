@@ -47,6 +47,7 @@ StretchCell.prototype = Object.create(UnderlinedCell.prototype);
 StretchCell.prototype.draw = function(width, height) {
   return this.inner.draw(width, height);
 };
+<<<<<<< HEAD:chapter6.js
 
 /* SEQUENCE INTERFACE
 
@@ -85,3 +86,4 @@ function Sequence(values) {
 
 var seq = new Sequence(1,2,3);
 console.log(seq.next(1));
+
