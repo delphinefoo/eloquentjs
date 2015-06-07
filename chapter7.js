@@ -28,3 +28,29 @@ SmartPlantEater.prototype.act = function(context) {
   if (space) 
     return {type: 'move', direction: space};
 };
+
+//PREDATORS
+
+//Any serious ecosystem has a food chain longer than a single link. Write another critter 
+//that survives by eating the herbivore critter. You’ll notice that stability is even harder 
+// achieve now that there are cycles at multiple levels. Try to find a strategy to make the 
+//ecosystem run smoothly for at least a little while.
+
+//One thing that will help is to make the world bigger. This way, local population booms 
+//or busts are less likely to wipe out a species entirely, and there is space for the 
+//relatively large prey population needed to sustain a small predator population.
+
+function Tiger() {
+	this.energy = 60;
+}
+
+Tiger.prototype.act = function(context) {
+  var space = context.find(' '), lotsOfSpace = context.findAll(' ');
+  if (lotsOfSpace.length >= 2)
+    return {type: 'move', direction: randomElement(lotsOfSpace)};
+  if (this.energy > 80 && space)
+    return {type: 'reproduce', direction: space};
+  var victim = context.find('O');
+  if (victim && this.energy < 100)
+    return {type: 'eat', direction: victim};
+};
