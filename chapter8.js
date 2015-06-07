@@ -61,7 +61,7 @@ console.log(reliableMultiply(8, 8));
 function withBoxUnlocked(body) {
   box.unlock();
   try {
-    body();
+    return body();
   } finally {
     box.lock();
   }
